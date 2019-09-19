@@ -4,15 +4,20 @@
 
 #include <iostream>
 using std::cout;
+using std::cin;
 #include <fstream>
 using std::ofstream;
 using std::ifstream;
 using std::fstream;
+using std::ios;
 
 int main() {
     
-    ifstream ifile("out.txt");
+    ofstream myfile;
+    myfile.open("lab04text.txt", ios::out | ios::app);
     
+    
+    ifstream ifile("out.txt");
     while(true) {
         auto x = 0;
         ifile >> x;
