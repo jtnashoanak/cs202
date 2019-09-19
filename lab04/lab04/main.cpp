@@ -5,6 +5,7 @@
 #include <iostream>
 using std::cout;
 using std::cin;
+using std::endl;
 #include <string>
 using std::string;
 using std::getline;
@@ -22,19 +23,6 @@ int main() {
     
     while(getline(myfile, line)) {
         cout<< line <<endl;
-    }
-    
-    ifstream ifile("out.txt");
-    while(true) {
-        auto x = 0;
-        ifile >> x;
-        
-        if(!ifile) {
-            if(ifile.eof()){
-                break;
-            }
-        }
-        cout<< "x is " << x << "\n";
     }
     
     
