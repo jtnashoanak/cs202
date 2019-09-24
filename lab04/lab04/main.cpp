@@ -16,14 +16,25 @@ using std::fstream;
 using std::ios;
 
 int main() {
-    string line;
+    string line, input;
     
-    ofstream myfile;
-    myfile.open("lab04text.txt", ios::out | ios::app);
+    ifstream infile;
+    infile.open("lab04text.txt");
     
-    while(getline(myfile, line)) {
-        cout<< line <<endl;
+    
+    if(infile.fail()) {
+        
+        cout<< "Failed to open text file." <<endl;
+    } else {
+        
+        while(getline(infile, line)) {
+            cout<< line <<endl;
+        }
     }
+    
+    cout<< "Enter a number and a line of text:" <<endl;
+    getline(cin, input);
+    
     
     
     return 0;
