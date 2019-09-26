@@ -4,10 +4,18 @@
 
 #include "names.hpp"
 #include <iostream>
+using std::cout;
+using std::endl;
 
 int main() {
     
+    using names::foo();
     
+    foo();
     
     return 0;
+}
+
+void foo() {
+    cout<< "This is in main.cpp" <<endl;
 }
