@@ -8,9 +8,7 @@ using std::cout;
 using std::endl;
 
 namespace names {
-    auto age = 21;
-
     void foo() {
-        cout<< "In names::foo()" <<endl;
+        cout<< "This is in names::foo()" <<endl;
     }
 }
