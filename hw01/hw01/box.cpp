@@ -15,7 +15,7 @@ ostream & Box::print(ostream & os) const {
             
             for(auto y = 0; y < Box::getWidth(); y++) {
                 
-                os << "X";
+                os << "x";
             }
             os << endl;
         }
@@ -26,20 +26,21 @@ ostream & Box::print(ostream & os) const {
             if(x == 0 || x == (Box::getHeight() - 1 )) {
                 
                 for(auto y = 0; y < Box::getWidth(); y++) {
-                    os << "X";
+                    
+                    os << "x";
                 }
                 os << endl;
                 
             } else {
                   
-                for(auto x = 0; Box::getWidth(); x++) {
+                for(auto x = 0; x < Box::getWidth(); x++) {
                     
                     if(x == 0 || x == (Box::getWidth() - 1)) {
                     
-                    os << "X";
+                    os << "x";
                     } else {
                     
-                    os << " ";
+                    os << ' ';
                     }
                     
                 os << endl;

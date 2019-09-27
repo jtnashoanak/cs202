@@ -6,9 +6,10 @@
 #ifndef box_h
 #define box_h
 
+#include <iostream>
+using std::ostream;
 #include <string>
 using std::string;
-#include <ostream>
 
 class Box {
 
@@ -16,6 +17,7 @@ public:
     Box();
     Box(int width, int height);
     Box(int width, int height, bool type);
+    ostream & print(ostream & os) const;
     ~Box();
     int getWidth() const;
     int getHeight() const;
