@@ -1,5 +1,5 @@
 //  box.hpp
-//  hw02
+//  hw03
 //  Created by Jadon Nashoanak.
 
 
@@ -35,5 +35,5 @@ private:
     static int _howMany;
 };
 
-#endif /* box_h */
+#endif /* box_hpp */
 

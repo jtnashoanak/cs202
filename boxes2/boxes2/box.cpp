@@ -1,5 +1,5 @@
 //  box.cpp
-//  hw02
+//  hw03
 //  Created by Jadon Nashoanak.
 
 #include "box.hpp"
@@ -7,47 +7,51 @@
 using std::ostream;
 using std::endl;
 
-ostream & Box::print(ostream & os) const {
+int Box::_howMany = 0;
+
+ostream & operator<<(ostream & os, const Box &var) {
     
-    if(Box::type() == "Filled") {
+if(var.type() == "Filled") {
         
-        for(auto x = 0; x < Box::getHeight(); x++) {
+        for(auto x = 0; x < var.getHeight(); x++) {
             
-            for(auto y = 0; y < Box::getWidth(); y++) {
+            for(auto y = 0; y < var.getWidth(); y++) {
                 
                 os << "x";
             }
             os << endl;
         }
-    } else {
+    }
+                
+if(var.type() == "Hollow") {
     
-        for(auto x = 0; x < Box::getHeight(); x++) {
+    for(auto x = 0; x < var.getHeight(); x++) {
             
-            if(x == 0 || x == (Box::getHeight() - 1 )) {
+        if(x == 0 || x == (var.getHeight() - 1 )) {
                 
-                for(auto y = 0; y < Box::getWidth(); y++) {
+            for(auto y = 0; y < var.getWidth(); y++) {
                     
-                    os << "x";
-                }
-                os << endl;
+                os << "x";
+            }
+            os << endl;
                 
-            } else {
+        } else {
                   
-                for(auto x = 0; x < Box::getWidth(); x++) {
+            for(auto x = 0; x < var.getWidth(); x++) {
                     
-                    if(x == 0 || x == (Box::getWidth() - 1)) {
+                if(x == 0 || x == (var.getWidth() - 1)) {
                     
-                    os << "x";
-                    } else {
+                os << "x";
+                } else {
                     
-                    os << ' ';
-                    }
-                    
-                os << endl;
+                os << ' ';
                 }
+                    
+            os << endl;
             }
         }
     }
+}
 return os;
 }
 
