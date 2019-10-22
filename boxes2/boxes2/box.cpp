@@ -11,65 +11,93 @@ int Box::_howMany = 0;
 
 ostream & operator<<(ostream & os, const Box &var) {
     
-if(var.type() == "Filled") {
+    if(var.type() == "Filled") {
+            
+            for(auto x = 0; x < var.getHeight(); x++) {
+                
+                for(auto y = 0; y < var.getWidth(); y++) {
+                    
+                    os << "x";
+                }
+                os << endl;
+            }
+        }
+                    
+    if(var.type() == "Hollow") {
         
         for(auto x = 0; x < var.getHeight(); x++) {
-            
-            for(auto y = 0; y < var.getWidth(); y++) {
                 
-                os << "x";
+            if(x == 0 || x == (var.getHeight() - 1 )) {
+                    
+                for(auto y = 0; y < var.getWidth(); y++) {
+                        
+                    os << "x";
+                }
+                os << endl;
+                    
+            } else {
+                      
+                for(auto x = 0; x < var.getWidth(); x++) {
+                        
+                    if(x == 0 || x == (var.getWidth() - 1)) {
+                        
+                    os << "x";
+                    } else {
+                        
+                    os << ' ';
+                    }
+                        
+                os << endl;
+                }
             }
-            os << endl;
         }
     }
-                
-if(var.type() == "Hollow") {
     
-    for(auto x = 0; x < var.getHeight(); x++) {
-            
-        if(x == 0 || x == (var.getHeight() - 1 )) {
-                
-            for(auto y = 0; y < var.getWidth(); y++) {
+    if(var.type() == "Checkered") {
                     
-                os << "x";
-            }
-            os << endl;
-                
-        } else {
-                  
-            for(auto x = 0; x < var.getWidth(); x++) {
+        for(auto x = 0; x < var.getHeight(); x++) {
                     
-                if(x == 0 || x == (var.getWidth() - 1)) {
+            for(auto y = 0; y < var.getWidth(); y ++) {
                     
-                os << "x";
-                } else {
+                int z = ((y + x) % 2);
                     
-                os << ' ';
+                if(z == 0) {
+                    os << 'x';
                 }
                     
-            os << endl;
+                if(z == 1) {
+                    os << ' ';
+                }
+            
+                os << endl;
             }
         }
     }
-}
 return os;
 }
 
-Box::Box() : _width(1), _height(1), _type(true){}
-Box::Box(int width, int height) : _type(true) {
+Box::Box(): _width(1), _height(1), _type(FILLED) {Box::_howMany++;}
+Box::Box(int width, int height) : _type(FILLED) {
     
     _width = width;
     _height = height;
+    Box::_howMany++;
 }
 
-Box::Box(int width, int height, bool type) {
+Box::Box(int width, int height, Box::BoxType type) {
     
     _width = width;
     _height = height;
     _type = type;
+    Box::_howMany++;
 }
 
-Box::~Box(){}
+Box::~Box() {Box::_howMany--;}
+                
+Box::Box(const Box & orig):_height(orig._height), _width(orig._width), _type(orig._type) {
+
+    Box::_howMany++;
+}
 
 int Box::getHeight() const {
     
@@ -92,20 +120,26 @@ int Box::setWidth(int width) {
     return _width;
 }
 
-bool Box::setType(bool type) {
+Box::BoxType Box::setType(Box::BoxType type) {
     
     _type = type;
     return _type;
 }
 
 string Box::type() const {
-    
-    if(Box::_type == false) {
-        
-        return "Hollow";
-    } else {
-        
-        return "Filled";
+                    
+    switch(Box::_type) {
+        case HOLLOW:
+            return "Hollow";
+            break;
+                    
+        case FILLED:
+            return "Filled";
+            break;
+                    
+        case CHECKERED:
+            return "Checkered";
+            break;
     }
 }
 
