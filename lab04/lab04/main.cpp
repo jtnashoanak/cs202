@@ -10,32 +10,40 @@ using std::endl;
 using std::string;
 using std::getline;
 #include <fstream>
-using std::ofstream;
 using std::ifstream;
-using std::fstream;
+using std::ofstream;
 using std::ios;
 
 int main() {
     string line, input;
-    
     ifstream infile;
     infile.open("lab04text.txt");
+    ofstream outfile;
+    outfile.open("lab04text.txt", ios::app);
+    auto x = 0;
     
-    
-    if(infile.fail()) {
+    if(!infile) {
         
         cout<< "Failed to open text file." <<endl;
     } else {
         
-        while(getline(infile, line)) {
-            cout<< line <<endl;
-        }
+       cout<< "Opened file successfully. " <<endl;
     }
     
-    cout<< "Enter a number and a line of text:" <<endl;
+    while(!infile.eof()) {
+        getline(infile, line);
+        cout<< line << endl;
+    }
+    
+    cout << "Enter a line of text that is going to be copied (n) times:" <<endl;
     getline(cin, input);
     
+    cout<< "Enter a number (n): " <<endl;
+    cin >> x;
     
+    for(auto i = 0; i <= x; i++) {
+        outfile << input <<endl;
+    }
     
     return 0;
 }

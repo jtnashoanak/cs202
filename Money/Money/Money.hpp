@@ -8,6 +8,15 @@
 #include <iostream>
 
 class Money {
+    
+    friend Money operator+(const Money & lhs, const Money & rhs);
+    friend Money operator-(const Money & lhs, const Money & rhs);
+    friend Money operator*(const Money & lhs, const double Money & rhs);
+    friend Money operator*(const double Money & lhs, const Money & rhs);
+    friend Money operator*(const Money & lhs, const Money & rhs);
+    friend Money operator/(const Money & lhs, const Money & rhs);
+    friend bool operator==(const Money & lhs, const Money & rhs);
+    
 public:
     Money();
     Money(double _USD);

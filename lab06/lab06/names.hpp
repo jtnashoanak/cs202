@@ -7,7 +7,7 @@
 
 namespace names {
 
-void foo();
+    void foo();
 }
 
 #endif /* names_hpp */
