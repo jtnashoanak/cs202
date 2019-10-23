@@ -56,4 +56,62 @@ Money::Money(int dollars, int cents):_USD(0) {
     _USD += cents;
 }
 
+Money::~Money(){}
+       
+bool operator==(const Money & lhs, const Money & rhs) {
+    return (lhs._USD == rhs._USD);
+}
+        
+bool operator!=(const Money &lhs, const Money &rhs) {
+        
+    return !(lhs._USD == rhs._USD);
+}
+
+bool operator>(const Money &lhs, const Money &rhs) {
+        
+    return (lhs._USD > rhs._USD);
+}
+        
+bool operator>=(const Money &lhs, const Money &rhs) {
+        
+    return (lhs._USD >= rhs._USD);
+}
+
+bool operator<(const Money &lhs, const Money &rhs) {
+        
+    return (lhs._USD < rhs._USD);
+}
+
+bool operator<=(const Money &lhs, const Money &rhs) {
+        
+    return !(lhs._USD>rhs._USD);
+}
+        
+Money operator+(const Money & lhs, const Money & rhs) {
+    Money add;
+    add._USD = lhs._USD + rhs._USD;
+    return add;
+}
+
+Money & Money::operator+=(const Money & rhs) {
+    _USD += rhs._USD;
+    return *this;
+}
+        
+Money operator-(const Money & lhs, const Money & rhs) {
+    Money sub;
+    sub._USD = lhs._USD - rhs._USD;
+    return sub;
+}
+
+Money & Money::operator-=(const Money & rhs) {
+    _USD -= rhs._USD;
+    return *this;
+}
+
+Money operator*(const Money & lhs, const Money & rhs) {
+    Money mult;
+    mult._USD = lhs._USD * rhs._USD;
+    return mult;
+}
 
