@@ -1,4 +1,4 @@
-//  Money .cpp
+//  Money.cpp
 //  Money
 //  Created by Jadon Nashoanak.
 
@@ -13,6 +13,7 @@ std::ostream & operator<<(std::ostream & os, const Money & var) {
     }
     
     os << "$" << osvar._USD / 100 << ".";
+        
     int cents = osvar._USD % 100;
     
     if(cents == 0) {
@@ -27,8 +28,11 @@ std::ostream & operator<<(std::ostream & os, const Money & var) {
         
     return os;
 }
+
+Money::Money():_USD(0){}
         
 Money::Money(double money):_USD(0) {
+        
     int round;
     int remainder = (money * 1000);
     remainder %= 10;
@@ -88,30 +92,68 @@ bool operator<=(const Money &lhs, const Money &rhs) {
 }
         
 Money operator+(const Money & lhs, const Money & rhs) {
+        
     Money add;
     add._USD = lhs._USD + rhs._USD;
     return add;
 }
 
 Money & Money::operator+=(const Money & rhs) {
+        
     _USD += rhs._USD;
     return *this;
 }
         
 Money operator-(const Money & lhs, const Money & rhs) {
+        
     Money sub;
     sub._USD = lhs._USD - rhs._USD;
     return sub;
 }
 
 Money & Money::operator-=(const Money & rhs) {
+        
     _USD -= rhs._USD;
     return *this;
 }
 
 Money operator*(const Money & lhs, const Money & rhs) {
+        
     Money mult;
     mult._USD = lhs._USD * rhs._USD;
     return mult;
+}
+
+Money operator*(const Money & lhs, const double & rhs) {
+        
+    Money mult;
+    mult._USD = lhs._USD * rhs;
+    return mult;
+}
+
+Money operator*(const double & lhs, const Money & rhs) {
+        
+    Money mult;
+    mult._USD = rhs._USD * lhs;
+    return mult;
+}
+
+Money & Money::operator*=(const double & rhs) {
+        
+    _USD *= rhs;
+    return *this;
+}
+
+Money operator/(const Money & lhs, const double & rhs) {
+        
+    Money div;
+    div._USD = lhs._USD / rhs;
+    return div;
+}
+
+Money & Money::operator/=(const double & rhs) {
+        
+    _USD /= rhs;
+    return *this;
 }
 
