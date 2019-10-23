@@ -60,9 +60,9 @@
 		D2551E0C23600E9100700B44 /* Money */ = {
 			isa = PBXGroup;
 			children = (
-				D2551E0D23600E9100700B44 /* Money.cpp */,
-				D2551E1423600EA200700B44 /* Money.hpp */,
 				D2551E1523600EF200700B44 /* moneytest.cpp */,
+				D2551E1423600EA200700B44 /* Money.hpp */,
+				D2551E0D23600E9100700B44 /* Money.cpp */,
 			);
 			path = Money;
 			sourceTree = "<group>";
