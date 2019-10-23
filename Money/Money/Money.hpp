@@ -17,6 +17,12 @@ class Money {
     friend Money operator/(const Money & lhs, const Money & rhs);
     friend bool operator==(const Money & lhs, const Money & rhs);
     
+    friend bool operator!=(const Money & lhs, const Money & rhs);
+    friend bool operator>(const Money & lhs, const Money & rhs);
+    friend bool operator>=(const Money & lhs, const Money & rhs);
+    friend bool operator<(const Money & lhs, const Money & rhs);
+    friend bool operator<=(const Money & lhs, const Money & rhs);
+    
 public:
     Money();
     Money(double _USD);
