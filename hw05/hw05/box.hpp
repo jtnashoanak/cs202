@@ -30,4 +30,33 @@ private:
     int _width;
 };
 
+class FilledBox : public Box
+{
+public:
+    FilledBox() = default;
+    FilledBox(int width, int height);
+    void print(std::ostream &) const override;
+    string type() const override;
+};
+
+class HollowBox : public Box
+{
+public:
+    HollowBox() = default;
+    HollowBox(int width, int height);
+    void print(std::ostream &) const override;
+    string type() const override;
+};
+
+class CheckeredBox : public Box
+{
+public:
+    CheckeredBox() = default;
+    CheckeredBox(int width, int height);
+    void print(std::ostream &) const override;
+    string type() const override;
+};
+
+std::unique_ptr<Box> boxFactory(char c, int w, int h);
+
 #endif /* box_hpp */
